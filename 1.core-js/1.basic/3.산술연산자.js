@@ -25,3 +25,8 @@ let m=8;
 m+=1;//m=m+1 =,+두번연산함. 
 console.log(`m:${m}`);
 
+const str ='hello'*5.5;
+console.log(str);
+// NaN:not a number
+
+
