@@ -58,8 +58,12 @@ let secret=Math.floor(Math.random()*100)+1;
 //입력 최소 최대값
 let min=1,max=100;
 
-//업다운 판단
+//초기 카운트 수 
+let initCount=5;
+//카운트다운변수
+let countdown=initCount;
 
+//업다운 판단
 //정답인 경우
 while(true){
     let answer=+prompt(`숫자를 입력하세요[${min}~${max}]`);
@@ -68,8 +72,9 @@ while(true){
         alert(`범위 안의 숫자를 입력해주세요!`);
         continue;
     }
+    countdown--;
     if(answer===secret){
-        alert(`정답입니다!`);
+        alert(`정답입니다! ${initCount-countdown}번 만에 맞췄습니다!`);
         break;
     }
     else if(answer<secret){
@@ -79,6 +84,14 @@ while(true){
     else{
         alert(`DOWN!`);
         max=answer-1;
-}
-}
+    }
+    
+    //추가게임 종료조건 
+    if (countdown==0){
+        alert(`패배하셨습니다. 정답은 ${secret}`);
+        break;
+    }else{
+        alert(`${countdown}번의 기회가 남았습니다!`);
+    }
+}//end while loop
 alert(`수고하셨습니다!`);
