@@ -53,16 +53,40 @@
 // }
 
 /////////////////////해설////////////////////
+//초기 난이도 설정하기
 //실제로 정답으로 사용한 랜덤 정수 만들기
 let secret=Math.floor(Math.random()*100)+1;
 //입력 최소 최대값
 let min=1,max=100;
 
 //초기 카운트 수 
-let initCount=5;
+let initCount;
+// let initCount; ->이렇게 해두면 자료형 undifined
 //카운트다운변수
-let countdown=initCount;
 
+//난이도 상수
+const HIGH=1;
+const MIDDLE=3;
+const LOW=10;
+let level = +prompt('난이도를 선택하세요!\n# [1. 상(3번의 기회) | 2. 중(6번의 기회) | 3. 하(10번의 기회)]');
+if(level===1){
+    initCount=HIGH;
+
+}else if(level===2){
+    initCount=MIDDLE;
+
+
+}
+else if(level===3){
+    initCount=LOW;
+
+}
+else{
+    alert(`잘못입력하였으므로 난이도 하로 자동시작합니다.`);
+    initCount=10;
+
+}
+let countdown=initCount;
 //업다운 판단
 //정답인 경우
 while(true){
