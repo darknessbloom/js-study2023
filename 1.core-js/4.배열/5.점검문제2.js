@@ -16,15 +16,15 @@ while(true){
     }
     else{
 
-        let usetAnswer=prompt(`[${memberList}]\n삭제할 멤버를 입력하세요`);
-        let indexNumber=memberList.indexOf(usetAnswer);
+        let userAnswer=prompt(`[${memberList}]\n삭제할 멤버를 입력하세요`);
+        let indexNumber=memberList.indexOf(userAnswer);
         if (indexNumber===-1){
-            alert(`${usetAnswer}은(는) 없는 이름입니다. 다시 입력해 주세요!`);
+            alert(`${userAnswer}은(는) 없는 이름입니다. 다시 입력해 주세요!`);
             continue;
         }
         else{
             memberList.splice(indexNumber,1);
-            alert(`${usetAnswer}가 삭제 되었습니다.`)
+            alert(`${userAnswer}가 삭제 되었습니다.`)
 
         }
     }
