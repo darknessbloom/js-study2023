@@ -19,7 +19,7 @@ console.log(others);
 //객체복사
 
 console.log('====================');
-const copyEmp={  
+const copyEmp={  //
     ...emp,
     address:'청양군',
     hobbies:['산책','수영'],
