@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrap">
+        <ul id="fruits">
+          <!-- ul 자식판단 -> 공백도 text 자식으로 판단 -->
+          <li class="fr apple">사과</li>
+          <li class="fr banana">바나나</li>
+          <li class="fr grape">포도</li>
+        </ul>
+    </div>
+    <script>
+      const $fruits = document.getElementById("fruits");
+      const $wrap=$fruits.parentElement;
+      const [$apple, $banana, $grape]=[...$wrap.firstElementChild.children];
+      const sameFlag=$banana.previousElementSibling===$apple;
+      console.log(sameFlag);
+      //closest('css선택자'):가까운 태그를 위로 올라가면서 탐색
+      const $found=$grape.closest('.wrap');
+      //$grape의 아래쪽 부터 탐색
+      $grape.querySelector();
+      console.log($found);
+    </script>
+  </body>
+</html>
