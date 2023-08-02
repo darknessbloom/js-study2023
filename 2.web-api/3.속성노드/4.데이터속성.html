@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--data 어트리뷰트  
+        data- 접두사를 사용하여 임의의 이름을 붙여 사용
+        $elementNode.dataset 프로퍼티로 조회 
+
+        
+    -->
+    <ul class="users">
+        <li data-user-number="4321" data-role="common">뽀로로</li>
+        <li data-user-number="9999" data-role="admin">핑구</li>
+    </ul>
+    <script>
+        const [$u1,$u2]=[...document.querySelectorAll('.users li')];
+        const pororoNumber= $u1.dataset.userNumber;//user-number
+        console.log(pororoNumber);
+        const pinguRole=$u2.dataset.role;
+        console.log(pinguRole);
+        $u1.dataset.role='gold';
+        $u1.dataset.phoneNumber='010-1234=1234';//추가 data-phone-number 로 프로퍼티 추가됨.
+        delete $u1.dataset.userNumber; //삭제
+        
+
+    </script>
+
+    
+</body>
+</html>
