@@ -7,7 +7,7 @@ const $divideBtn = document.getElementById('btn-divide');//나누기
 
 const $currentResultOutput = document.getElementById('current-result');
 const $currentCalculationOutput = document.getElementById('current-calculation');
-
+const $logEntries=document.querySelector('.log-entries');
 function outputResult(result, text) {
   $currentResultOutput.textContent = result;
   $currentCalculationOutput.textContent = text;
