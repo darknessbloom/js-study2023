@@ -4,6 +4,7 @@
 //계산 이력을 모아둘 배열
 const logEntries=[];
 
+const $logBox=document.querySelector('#operatelog .log-box');
 let currentResult = 0;
 //로그 이력을 만드는 함수
 const writeToLog=(operation,prevResult,number,result)=>{
@@ -16,7 +17,17 @@ const writeToLog=(operation,prevResult,number,result)=>{
 
     };
     logEntries.push(logObject);
-    console.log(logEntries);
+    $lgEntrues=[...logEntries];
+    const $newPTag=document.createElement('p');        
+    $newPTag.textContent=` operation:${logObject.operation} prevResult:${logObject.prevResult} number:${logObject.number} result:${logObject.result} `;
+    $newPTag.style.fontSize='14px';
+    $logBox.appendChild($newPTag);
+
+
+    
+   
+    
+    // console.log(logEntries.logObject);
 };
 //사용자의 입력값을 읽어오는 함수
 const getUsetNumberInput = () => +$userInput.value;
@@ -26,46 +37,55 @@ const createLogAndRenderOutput = (operateMark,originResult, calcNumber) => {
   const calcDescriptionLog = `${originResult}${operateMark}${calcNumber}`;
   outputResult(currentResult, calcDescriptionLog);
 };
+
+//계산기능 헬퍼함수
+const calculate=(type)=>{
+    const enteredNumber = getUsetNumberInput();
+    const originResult = currentResult;
+    let mark;
+    if(type==='ADD'){
+        mark='+';
+        currentResult += enteredNumber;
+    }
+    else if(type==='SUB'){
+        mark='-';
+        currentResult -= enteredNumber;
+
+    }
+    else if(type==='MULTI'){
+        mark='x';
+        currentResult *= enteredNumber;
+
+    }
+    else{
+        mark='/';
+        currentResult /= enteredNumber;
+
+    }
+    console.log(`${mark} button click`);
+    createLogAndRenderOutput(mark,originResult, enteredNumber);
+    writeToLog(type,originResult,enteredNumber,currentResult);
+
+};
 //더하기 버튼 이벤트 핸들러
 const addHandler = () => {
-  console.log("+ button click");
-  //입력창에 입력한 숫자 읽기
-  const enteredNumber = getUsetNumberInput();
-  //계산전 값 백업
-  const originResult = currentResult;
-  //실제 계산 결과 반영
-  currentResult += enteredNumber;
-  createLogAndRenderOutput('+',originResult, enteredNumber);
-  writeToLog('ADD',originResult,enteredNumber,currentResult);
+  calculate('ADD');
   
   //화면에 랜더링
 };
 
 const subtractHandler = () => {
-    console.log("- button click");
-    const enteredNumber = getUsetNumberInput();
+    calculate('SUB');
     
-    const originResult = currentResult;
-    currentResult -= enteredNumber;
-    createLogAndRenderOutput('-',originResult, enteredNumber);
-    writeToLog('SUD',originResult,enteredNumber,currentResult);
 };
 
 const multiplyHandler = () => {
-    console.log("X button click");
-    const enteredNumber = getUsetNumberInput();
-    const originResult = currentResult;
-    currentResult *= enteredNumber;
-    createLogAndRenderOutput('x',originResult, enteredNumber);
-    writeToLog('MULTI',originResult,enteredNumber,currentResult);
+    calculate('MULTI');
+    
 };
 const divideHandler = () => {
-    console.log("/ button click");
-    const enteredNumber = getUsetNumberInput();
-    const originResult = currentResult;
-    currentResult /= enteredNumber;
-    createLogAndRenderOutput('/',originResult, enteredNumber);
-    writeToLog('DIVDE',originResult,enteredNumber,currentResult);
+    calculate('DIVIDE');
+  
   
 };
 //================ 이벤트 핸들러 바인딩 ========================//

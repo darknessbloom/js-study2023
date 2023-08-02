@@ -22,7 +22,7 @@
   }
   
   #results,
-  #calculator {
+  #calculator,#operatelog {
     margin: 2rem auto;
     width: 40rem;
     max-width: 90%;
@@ -32,7 +32,7 @@
     color: #023d6d;
   }
   
-  #results {
+  #results,#operatelog {
     text-align: center;
   }
   
