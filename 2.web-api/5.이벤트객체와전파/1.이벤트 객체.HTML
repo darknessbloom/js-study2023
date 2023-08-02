@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <P>아무곳이나 클릭하세요</P>
+    <EM class="MSG"></EM>
+    <SCript>
+        const documentClickHandler=(e)=>{
+            console.log('아무무데나츨');
+            const $em=document.querySelector('.msg');
+            $em.textContent=`x:${e.x} y:${e.y}`;
+        }
+        document.addEventListener('click',documentClickHandler);
+
+    </SCript>
+</body>
+</html>

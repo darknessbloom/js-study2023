@@ -40,7 +40,7 @@ const renderToLog = ({
 }) => {
   const $newLi = document.createElement("li");
   $newLi.classList.add("log-entries__item");
-  $newLi.textContent = `#${++seq}. ${firstNumber} ${convertOperationToMark(operation)} ${secondNumber} = ${result}`;
+  $newLi.textContent = `#${++seq}. ${firstNumber} ${CONVE(operation)} ${secondNumber} = ${result}`;
 
   $logEntries.appendChild($newLi);
 };
