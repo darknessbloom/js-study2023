@@ -144,7 +144,8 @@ input:focus {
   justify-content: flex-end;
 }
 
-.movie-element {
+.movie-element { 
+    /* li */
   margin: 1rem 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 10px;
@@ -153,6 +154,7 @@ input:focus {
 
 .movie-element h2,
 .movie-element p {
+    /* h2, 영화제목 ,p평점 */
   font-size: 1.25rem;
   margin: 0;
 }
@@ -171,6 +173,7 @@ input:focus {
 }
 
 .movie-element__image {
+    /* 이미지 */
   flex: 1;
   border-radius: 10px 0 0 10px;
   overflow: hidden;
