@@ -34,6 +34,7 @@ const convertOperationToMark = (operation) => {
   
 //로그 이력을 렌더링 하는 함수
 const renderToLog = ({
+  operation,
   prevResult: fisrtNumber,
   number: secondNumber,
   result,
@@ -113,3 +114,5 @@ $addBtn.addEventListener("click", addHandler);
 $subtractBtn.addEventListener("click", subtractHandler);
 $multiplyBtn.addEventListener("click", multiplyHandler);
 $divideBtn.addEventListener("click", divideHandler);
+
+
