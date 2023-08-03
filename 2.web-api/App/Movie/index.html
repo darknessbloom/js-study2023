@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Favorite Movies</title>
+    <link rel="stylesheet" href="assets/styles/app.css" />
+    <script src="assets/scripts/app.js" defer></script>
+  </head>
+  <body>
+    <div id="backdrop"></div>
+    <!-- ADD 버튼 눌렀을때 visible 클래스 추가 되도록 -->
+    <div class="modal" id="add-modal">
+      <div class="modal__content">
+        <label for="title">영화 제목</label>
+        <input type="text" name="title" id="title" />
+        <label for="image-url">이미지 URL</label>
+        <input type="text" name="image-url" id="image-url" />
+        <label for="rating">평점</label>
+        <input
+          type="number"
+          step="1"
+          max="5"
+          min="1"
+          name="rating"
+          id="rating"
+        />
+      </div>
+      <div class="modal__actions">
+        <button class="btn btn--passive">취소</button>
+        <button class="btn btn--success">추가</button>
+      </div>
+    </div>
+   
+    <div class="modal" id="delete-modal">
+      <h2 class="modal__title">진짜 삭제합니까?</h2>
+      <p class="modal__content">
+        정말 이 항목을 삭제합니까? 삭제하면 되돌릴 수 없습니다.
+      </p>
+      <div class="modal__actions">
+        <button class="btn btn--passive">No (Cancel)</button>
+        <button class="btn btn--danger">Yes</button>
+      </div>
+    </div>
+
+    <header>
+      <h1>좋아하는 영화</h1>
+      <button>ADD MOVIE</button>
+    </header>
+
+    <main>
+      <section id="entry-text" class="card">
+        <p>나의 개인 저장공간~</p>
+      </section>
+      <ul id="movie-list"></ul>
+    </main>
+  </body>
+</html>
