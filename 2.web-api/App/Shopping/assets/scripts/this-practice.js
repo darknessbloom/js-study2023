@@ -79,3 +79,4 @@ const $input=document.querySelector('input');
 // document.getElementById('btn').addEventListener('click',eventHaldler.bind($input));
 //핸들러한테 추가파라미터 전달 용
 document.getElementById('btn').addEventListener('click',eventHaldler.bind(null,'사과'));
+
