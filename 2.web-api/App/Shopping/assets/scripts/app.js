@@ -33,8 +33,13 @@ class ProductItem{
     this.product=product;
 
   }
-
-  render(){
+  //담기버튼 이벤트 클릭 핸들러
+  addToCartHandler(){
+    console.log(`장바구니에 상품 추가`);
+    console.log(this.product);
+    //이 핸들러에서 누른 그 상품의정보를 알아랴 함
+  }
+    render(){
     const $prod = document.createElement("li");
     $prod.classList.add("product-item");
     $prod.innerHTML = `
@@ -48,38 +53,42 @@ class ProductItem{
         </div>
       </div>
     `;
+    const $addCartBtn=$prod.querySelector('button');
+    $addCartBtn.addEventListener('click',()=> this.addToCartHandler())
     return $prod;
 
   }
 }
 
+//한개의 UL을 생성하는 클래스
+class ProductList{
+  constructor(){
+    //상품들을 모아놓은 배열
+    this.products=[
+      p1,
+      p2,
+      new Product(
+        "햄버거",
+        "https://images.chosun.com/resizer/5jStJ5InVS4u3iHvEzB8y_tGrr8=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/HV765ADF7VF4FLG5KISDNFMUJ4.PNG",
+        16900,
+        "꽈뜨로 맥씨멈 스테카 버거~",
+      ),
+      new Product(
+        "애플워치",
+        
+          "https://img.danawa.com/prod_img/500000/535/481/img/15481535_1.jpg?_v=20211215103510",
+         400000,
+        "APPLE watch 2세대 2022",
+      ),
+      new Product(
+        "애플망고",
+        "https://m.thegiboon.com/web/product/big/202104/ea08c22e8939ab1977487abc826b8ab8.jpg",
+        60000,
+        "맛있는 맹고~ 당장 사먹어야지~",
+      ),
+    ];
 
-// 상품 목록에 대한 객체
-const productList = {
-  products: [
-    p1,
-    p2,
-    new Product(
-      "햄버거",
-      "https://images.chosun.com/resizer/5jStJ5InVS4u3iHvEzB8y_tGrr8=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/HV765ADF7VF4FLG5KISDNFMUJ4.PNG",
-      16900,
-      "꽈뜨로 맥씨멈 스테카 버거~",
-    ),
-    new Product(
-      "애플워치",
-      
-        "https://img.danawa.com/prod_img/500000/535/481/img/15481535_1.jpg?_v=20211215103510",
-       400000,
-      "APPLE watch 2세대 2022",
-    ),
-    new Product(
-      "애플망고",
-      "https://m.thegiboon.com/web/product/big/202104/ea08c22e8939ab1977487abc826b8ab8.jpg",
-      60000,
-      "맛있는 맹고~ 당장 사먹어야지~",
-    ),
-  ],
-
+  }//end constructor
   render() {
     // console.log('render!!', this);
     const $app = document.getElementById("app");
@@ -94,8 +103,17 @@ const productList = {
     $app.appendChild($prodList);
     
     
-  },
-};
+  }
+
+}
+//랜더링 명력
+const productList=new ProductList();
+productList.render();
+
+// 상품 목록에 대한 객체
+// const productList = {
+  
+// };
 
 // 렌더링 명령
 productList.render();
