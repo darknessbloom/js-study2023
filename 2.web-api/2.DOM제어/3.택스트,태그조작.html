@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #greet span {
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="greet">
+        Hello <span class="hilight">World</span>
+    </div>
+    <ul id="food-items">
+        <li class="food">짜장면</li>
+        <li class="food">볶음밥</li>
+        <li class="food">파스타</li>
+    </ul>
+
+    <script>
+        const $greet=document.getElementById('greet');
+        console.log($greet.textContent.trim());
+        console.log($greet.innerHTML);
+        // 안에 인라인 태그가 사라짐..
+
+        // 인라인태그 ;
+         // $greet.firstElementChild.textContent="javascript";
+        
+        //태그와 함께 조작할때 
+        $greet.innerHTML='Hello <span>java</span>';
+
+        const $foods=document.getElementById('food-items');
+        $foods.lastElementChild.textContent='마카로니';
+        
+        // 태그추가
+        $foods.innerHTML+='<li class="food">족발</li>';
+
+        //자식태그 전체 삭제
+        $foods.innerHTML='';
+    </script>
+  </body>
+</html>

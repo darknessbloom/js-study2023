@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li id="apple" style="background-color: red;">사과</li>
+        <li id="banana">바나나</li>
+        <li id="grape">포도</li>
+        <li id="peach">복숭아</li>
+    </ul>
+    <script>
+        // console.log(document.body.children[0].children[0]);
+        // $banana -> 태그가 들어있는 변수임을 의미.
+        const $banana=document.getElementById('banana');
+        console.log($banana);
+
+        $banana.textContent="빠나나나나";
+        $banana.attributes.id.value="빠나나"
+        const $apple=document.getElementById('apple');
+        $apple.style.background='orange';
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .banana + li {
+      background: violet;
+    }
+  </style>
+</head>
+<body>
+  
+  <ul id="fruits">
+    <li class="fr apple">사과</li>
+    <li class="fr banana">바나나</li>
+    <li class="fr grape">포도</li>
+    <li class="fr orange">오렌지</li>
+  </ul>
+
+  <script>
+    // const $grape = document.querySelector('.grape');
+    // const $grape = document.querySelector('#fruits li:nth-child(3)');
+    const $grape = document.querySelector('.banana + li');
+
+    $grape.textContent = '맛있는 포도';
+
+    // querySelector는 발견된 첫번째 태그만 가져옴.
+    const $fr = document.querySelectorAll('.fr');
+    console.log($fr);
+
+    // const $apple = document.querySelector('.apple');
+    // console.log($apple);
+    // $apple.textContent = '애플';
+
+    // $fr.reverse();
+
+    // 유사배열: 객체인데 배열과 비슷하게 생김
+    const foods = {
+      0: '짜장면',
+      1: '우동',
+      2: '김치찌개',
+      age: 30,
+      length: 3
+    };
+    console.log(foods.length);
+
+
+    // !!!  querySelectorAll이 가져오는 데이터 묶음은
+    // 배열이 아닌 유사배열이므로, 다루기가 힘들다.
+    // 그래서 유사배열을 실제 배열로 바꿔서 쓰는 것이 좋다.
+
+    const $fruitArray = [...$fr];
+    console.log($fruitArray);
+
+    $fruitArray.pop().textContent = '오우뤠인지';
+
+    for (const $f of $fruitArray) {
+      $f.style.border = '1px dashed tomato';
+      $f.style.margin = '10px';
+    }
+
+
+  </script>
+</body>
+</html>

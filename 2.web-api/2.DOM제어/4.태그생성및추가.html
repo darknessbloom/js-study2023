@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="fruits">
+        <li>사과</li>
+    </ul>
+    <script>
+        //태그이름과 텍스트를 전달받으면 태그를 생성하는 함수
+        function makeTag(tagName='div',text=''){
+            const $newTag=document.createElement(tagName);
+            if(text) $newTag.textContent=text;
+            return $newTag;
+        }
+        //부모태그에 자식을 추가하는 함수
+        function appendNewTag($parent, $newChild){
+            $parent.appendChild($newChild);
+        }
+
+        //태그를 생성하면서 부모에 바로 추가해주는 함수
+        function append($parent,options){
+            appendNewTag($parent,makeTag(options.tagName,options.text));
+        }
+       /* //태그 생성 : <li></li>
+        const $newLiTag=document.createElement('li');
+        console.log($newLiTag);
+        
+        //텍스트 추가하기
+        $newLiTag.textContent='바나나';
+        console.log($newLiTag);
+
+        //자식노드 추가하기: appendChild-> 맨 마지막에 추가
+        const $fruits= document.getElementById('fruits');
+        $fruits.appendChild($newLiTag);*/
+        const $fruits= document.getElementById('fruits');
+        const a=makeTag('li','룰루랄라');
+        console.log(a);
+        appendNewTag($fruits,a);
+        appendNewTag($fruits,makeTag('li','망고'));
+        append($fruits,{tagName:'li',text: '포도'});
+        append($fruits,{tagName:'li',text:'복숭아'});
+    </script>
+</body>
+</html>
