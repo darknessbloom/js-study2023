@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div><button id="b1">클릭 1</button></div>
+    <div><button id="b2">클릭 2</button></div>
+    <div><button id="b3">클릭 3</button></div>
+    <script>
+        //이벤트 핸들러
+        function sayHelloHandler(){
+            alert('hello');
+        }
+        //프로퍼티는 객체의 속성
+        const $btn1=document.getElementById('b1');
+        //console.dir 요소 노드의 프로퍼티 볼수 있음
+        console.dir($btn1);
+        $btn1.onclick=sayHelloHandler;
+        const $btn2=document.getElementById('b2');
+        $btn2.onclick=()=>{
+            $btn2.style.width='150px';
+        };
+        // 프로퍼티 방식의 단점: 여러 핸들러응 바인딩 할수 없음.
+        $btn2.onclick=sayHelloHandler;
+        const $btn3=document.getElementById('b3');
+        $btn3.onmouseover=()=>{
+            $btn3.style.background='red';
+
+        };
+        $btn3.onmouseout=()=>{
+            $btn3.style.background='yellow';
+        }   
+        //이벤트 핸들어 베거하기
+        setTimeout(()=>{
+             //2초후에 실행됨!
+             $btn3.onmouseout=null;
+
+        }
+           
+        ,2000);     
+    </script>
+  </body>
+</html>

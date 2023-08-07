@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">버튼입니다</button>
+    <script>
+        const hellohandler=()=>alert('helloo');
+        const $btn = document.getElementById('btn');
+        $btn.addEventListener('click',hellohandler);
+        $btn.addEventListener('click',()=>{
+            $btn.style.background='aqua';
+        });
+
+        //핸들러제거:이름이 있는 핸들러만 제거가능!
+        $btn.removeEventListener('click',hellohandler);
+
+    </script>
+</body>
+</html>
