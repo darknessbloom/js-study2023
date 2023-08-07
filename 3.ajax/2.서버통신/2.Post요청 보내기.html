@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        p{
+            white-space: pre;
+        }
+    </style> -->
+</head>
+<body>
+    <pre>fdsfsfdsfdff
+        dffffffffff
+        fffffff            dfffffff
+    </pre>
+    <button id="btn">등록</button>
+
+
+    <script>
+        const fetchPost=()=>{
+             //서버에 등록 요청(POST)
+        const xhr=new XMLHttpRequest();
+        xhr.open('POST','http://localhost:5000/posts');
+        //서버로 보낼 데이터(payload)
+        const newPost={
+            title:'새로운 데이터',
+            body:'zzzzzzzzzzzzzzzzzzzzzzzzㅋㅋㅋㅋㅋㅋㅋㅋ'
+        };
+
+        //payload를 보낼떄 js-json으로 보내야함.
+        const payload=JSON.stringify(newPost);
+
+
+        // 보내는 데이터가 뭔지 요청 헤더에 적어야함.
+        xhr.setRequestHeader('content-type','application/json');
+
+        // 요청 송신:데이터를 실어보냄.
+        xhr.send(payload);
+
+        };
+
+        document.getElementById('btn').addEventListener('click',fetchPost);
+       
+
+
+    </script>
+
+</body>
+</html>
