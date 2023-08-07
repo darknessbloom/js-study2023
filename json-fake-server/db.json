@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "냠냠 쩝쩝",
+      "body": "abcdef"
+    },
+    {
+      "id": 2,
+      "title": "강아지",
+      "body": "비숑"
+    }
+  ],
+  "users":[
+    {
+      "id":1,
+      "account":"abc1234",
+      "userName":"김철수"
+    },
+    {
+      "id":2,
+      "account":"abc5678",
+      "userName":"박영희"
+    },
+    {
+      "id":3,
+      "account":"def1234",
+      "userName":"구구콘"
+    }
+  ]
+ 
+}
