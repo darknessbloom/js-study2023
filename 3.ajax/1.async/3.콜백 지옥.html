@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <script>
+
+    //GET요청을 위한 비동기함수
+    // 응답결과를 내보내기 위해 콜백을 사용
+    const get = (url, callbackFn) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.send();
+
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const responseData = JSON.parse(xhr.response);
+          callbackFn(responseData);
+        } else {
+          console.error(`${xhr.status} ${xhr.statusText}`);
+        }
+      }
+    };
+
+
+    //게시물 목록을 취득
+    get('http://localhost:5000/posts', (responseData) => {
+      console.log('1. 게시물 가져오기');
+      const posts = responseData;
+      // console.log(posts);
+
+      // 두번째 게시물의 글쓴이 정보를 가져옴
+      // const writerId = posts[1].userId;
+      // 게시물 글쓴이 정보 서버에 요청
+      get('http://localhost:5000/users', user => {
+        console.log('2. 유저 정보 가져오기');
+        const userInfo = resp; // 유저정보 획득
+        // 유저정보에서 유저의 팔로워 목록을 가져와야 함
+        get('http://localhost:5000/followers', followers => {
+          console.log('3. 팔로워 정보 가져오기');
+        });
+      });
+    });
+
+  </script>
+</body>
+
+</html>

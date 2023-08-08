@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //GET요청을 위한 비동기함수
+    const get = url => {
+        console.log(url);
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.send();
+
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                console.log(JSON.parse(xhr.response));
+                return JSON.parse(xhr.response); //onload안의 콜백함수 리턴값
+                /*
+                1. 우리는 응답결과를 함수 밖으로 반환하고 싶다!
+                - return JSON.parse(xhr.response);
+                - 위 코드는 불가능하다 현재 함수는 onload에 이벤트핸들러함수 안쪽이며
+                  get함수의 리턴값이 아니다.
+                 */
+            } else {
+                console.error(`${xhr.status} ${xhr.statusText}`);
+            }
+        }
+    };
+
+
+    //게시물 목록 취득
+    const posts=get('http://localhost:5000/posts');
+    //두번째 게시물의 글쓴이 정보를 가져옴.
+    const writerId=posts[1].userId;
+    //게시물 글쓴이 정보 서버에 요청
+    const user=get('http:/localhost:5000/users/'+writerId);
+</script>
+</body>
+</html>
