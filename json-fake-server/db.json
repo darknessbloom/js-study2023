@@ -1,11 +1,6 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "수정수정~",
-      "body": "zzzzzzzzzzzzzzzzzzzzzzzzㅋㅋㅋㅋㅋㅋㅋㅋ"
-    },
-    {
       "title": "고양이",
       "body": "페르시안",
       "id": 3
@@ -19,6 +14,11 @@
       "title": "판다",
       "body": "푸바오",
       "id": 7
+    },
+    {
+      "title": "22222",
+      "body": "222222",
+      "id": 8
     }
   ]
 }
