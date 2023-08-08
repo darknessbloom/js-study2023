@@ -36,5 +36,10 @@
       "userName": "뽀로로"
     }
   ],
-  "followers": []
+  "followers": [],
+  "todos": [
+    { "id": 1, "text": "할일 1", "done": false },
+    { "id": 2, "text": "할일 2", "done": true },
+    { "id": 3, "text": "할일 3", "done": false }
+  ]
 }
