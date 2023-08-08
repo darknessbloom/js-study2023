@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <style>
+        p{
+            white-space: pre;
+        }
+    </style> -->
+  </head>
+  <body>
+    <pre>
+fdsfsfdsfdff
+        dffffffffff
+        fffffff            dfffffff
+    </pre>
+    <button id="btn">조회</button>
+
+    <script>
+      const fetchGet = (url) => {
+        //fetch를 하면 첫번째 Promise는 
+        //전체적인 응답정보 (서버json,상태,에러메시지)가
+        //PromiseResult안에 들어옵니다.
+        return fetch(url).then(response=> response.json());
+        };
+
+      const clickHandler=e=>{
+       fetchGet('http://localhost:5000/posts')
+       .then(postList=>{
+        .then('http://localhost:5000/posts');
+        console.log(postList);
+        postList.forEach(post => {
+          document.write(post.title+'<br>');
+          
+        });
+       });
+        
+      }
+
+      document.getElementById("btn").addEventListener("click", clickHandler);
+    </script>
+  </body>
+</html>
