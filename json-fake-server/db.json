@@ -2,13 +2,8 @@
   "posts": [
     {
       "id": 1,
-      "title": "냠냠 쩝쩝",
-      "body": "abcdef"
-    },
-    {
-      "id": 2,
-      "title": "강아지",
-      "body": "비숑"
+      "title": "수정수정~",
+      "body": "zzzzzzzzzzzzzzzzzzzzzzzzㅋㅋㅋㅋㅋㅋㅋㅋ"
     },
     {
       "title": "고양이",
@@ -21,29 +16,9 @@
       "id": 4
     },
     {
-      "title": "",
-      "body": "",
-      "id": 5
-    },
-    {
-      "title": "",
-      "body": "",
-      "id": 6
-    },
-    {
       "title": "판다",
       "body": "푸바오",
       "id": 7
-    },
-    {
-      "title": "",
-      "body": "",
-      "id": 8
-    },
-    {
-      "title": "ㅇㅇ",
-      "body": "ㅇㅇ",
-      "id": 9
     }
   ]
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <style>
+        p{
+            white-space: pre;
+        }
+    </style> -->
+  </head>
+  <body>
+    <pre>
+fdsfsfdsfdff
+        dffffffffff
+        fffffff            dfffffff
+    </pre>
+    <button id="btn">삭제!</button>
+
+    <script>
+      const fetchPost = () => {
+        const id=2;
+        //서버에 삭제 요청(DELETE)
+        const xhr = new XMLHttpRequest();
+        xhr.open("DELETE", `http://localhost:5000/posts/${id}`);
+       
+    
+        // 요청 송신:데이터를 실어보냄.
+        xhr.send();
+      };
+
+      document.getElementById("btn").addEventListener("click", fetchPost);
+    </script>
+  </body>
+</html>

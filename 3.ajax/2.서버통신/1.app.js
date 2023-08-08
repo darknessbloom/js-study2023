@@ -36,12 +36,14 @@ const fetchGetPosts = () => {
     //  js -> json  JSON.stringify()
     const postList = JSON.parse(xhr.response);
     console.log(postList[0].title);
-    postList.forEach((post) => {
+    postList.forEach(({id,title,body}) => {
       const $postLi = document.createElement("li");
+      //li태그에 식별 아이디부여
+      $postLi.dataset.postId=id;
       $postLi.classList.add("post-item");
       $postLi.innerHTML = `
-        <h2>${post.title}</h2>
-        <p>${post.body}</p>
+        <h2>${title}</h2>
+        <p>${body}</p>
         <button>delete</button>
         `;
       $postUl.appendChild($postLi);
@@ -80,6 +82,39 @@ const fetchNewPost=(e)=>{
 
     };
 }
+const fetchDelete=(id)=>{
+  const xhr=new XMLHttpRequest();
+  xhr.open('DELETE',`http://localhost:5000/posts/${id}`);
+  xhr.send();
+
+  //응답처리
+  xhr.onload=()=>{
+    if(xhr.status===200){
+      console.log(`삭제성공`);
+    }else{
+      alert(`삭제 실패`);
+    }
+  }
+
+};
+
+
+//삭제클릭하면 벌어질 일들에대한 함수
+const deletePostHandler=e=>{
+  // if e.taeget.querySelector('button') !==e.target)
+  if(!e.target.matches('button')){
+    console.log(`나가기`);
+    return;
+  }
+
+  //삭제 클릭 대상 아이디 잡아오기
+  const id=e.target.closest('li').dataset.postId;
+  fetchDelete(id);
+}
+//삭제 이벤트 등록
+$postUl.addEventListener('click',deletePostHandler);
+
+
 
 //폼태그에 전송 이벤트 등록
 $addForm.addEventListener('submit',fetchNewPost);
