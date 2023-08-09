@@ -63,6 +63,25 @@ const addTodoHandler=e=>{
 const $addBtn=document.getElementById('add');
 $addBtn.addEventListener('click',addTodoHandler);
 
+//step3. 할일 삭제기능
+const deleteTodoHandler=e=>{
+    if(!e.target.matches('.remove span')) return;
+
+    //특정 할일을 지우기위해 그 할일의 아이디 값을 알아야함.
+    const id=e.target.closest('.todo-list-item').dataset.id;
+    // console.log(id);
+    // 서버에 삭제 요청하기
+    fetchTodos(`${URL}/${id}`,'DELETE')
+    .then(res=>{
+        if(res.status===200||res.status===201){
+            alert(`삭제성공!`);
+        }
+        else{
+            alert(`삭제실패!`);
+        }
+    });
+}
+$todoList.addEventListener('click',deleteTodoHandler);
 
 
 //======================= 앱실행 ============================//
