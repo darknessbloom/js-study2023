@@ -42,14 +42,24 @@ section.todo-template .content .todo-insert {
     background: #495057;
     display: flex;
 }
+
+
 section.todo-template .content .todo-insert input {
     /* background: red; */
+    
     flex: 1;
     padding: 8px;
     font-size: 1.1em;
     line-height: 1.5;
     color: #fff;
 }
+section.todo-template .content .todo-insert input.is-empty{
+    background: #e20;
+    
+   
+}
+
+
 
 section.todo-template .content .todo-insert input::placeholder {
     color: #DEE2E6;
