@@ -29,14 +29,20 @@
   "followers": [],
   "todos": [
     {
-      "id": 3,
-      "text": "할 일 3",
+      "id": 1,
+      "text": "저녁 요리하기",
       "done": false
     },
     {
-      "text": "할일 4",
-      "done": false,
-      "id": 4
+      "id": 2,
+      "text": "뉴스 기사 보기",
+      "done": true
+    },
+    {
+      "id": 3,
+      "text": "자바스크립트 공부하기",
+      "done": false
     }
+   
   ]
 }
