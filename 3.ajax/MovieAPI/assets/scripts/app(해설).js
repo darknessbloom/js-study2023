@@ -30,6 +30,40 @@ const renderTodos = (todoList) => {
     $todoList.appendChild($newLi);
   });
 };
+//---------이벤트 관련함수
+const addTodoHandler=e=>{
+    //1. 클릭이벤트가 잘 일어나는가?
+    console.log('클릭');
+    //클릭하면 일단 왼쪽에 인풋의 텍스트를 읽어야함.
+    //2-1 인풋부터 찾자
+    const $textInput=document.getElementById('todo-text');
+    //2-2인풋안에 텟스트를 꺼내자
+    const inputText=$textInput.value;
+    
+    //3. 서버에 이데이터를 보내서 저장해야함
+    //->fetch가 필요 저장이니까 POST!
+    // -> payload를 API 스펙에 맞게 만들어 보내야함.
+    const payload={
+        text:inputText,
+        done:false
+    }
+
+    fetchTodos(URL,'POST',payload)
+    .then(res=>{
+        if(res.status===200||res.status===201){
+            alert(`등록성공!`);
+        }
+        else{
+            alert(`등록실패!`);
+        }
+    });
+}
+
+//step2 할일 등록기능
+const $addBtn=document.getElementById('add');
+$addBtn.addEventListener('click',addTodoHandler);
+
+
 
 //======================= 앱실행 ============================//
 const init = () => {
