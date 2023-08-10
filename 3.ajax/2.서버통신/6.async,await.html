@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      p {
+        white-space: pre;
+      }
+    </style>
+  </head>
+
+  <body>
+    <pre></pre>
+    <button id="btn">조회!</button>
+
+    <script>
+      const foo= async()=>{
+        return '메롱';
+      };
+      console.log(foo().then(res=>console.log(res)));
+
+      const getPosts = async () => {
+        const res = await fetch("http://localhost:5000/posts");
+        console.log(res);
+        const postList =await res.json();
+
+        console.log(postList);
+        postList.forEach((post) => {
+          document.write(post.title + "<br>");
+        });
+      };
+      const clickHandler = (e) => {
+        getPosts();
+      };
+
+      document.getElementById("btn").addEventListener("click", clickHandler);
+    </script>
+  </body>
+</html>
