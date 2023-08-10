@@ -60,6 +60,11 @@ const renderTodos = (todoList) => {
 };
 
 // ========= 이벤트 관련 함수 ========= //
+const insertTodo=async function(payload){
+  const res=await fetchTodos(URL, 'POST', payload);
+
+}
+
 const addTodoHandler = e => {
   e.preventDefault();
   
@@ -86,14 +91,8 @@ const addTodoHandler = e => {
     text: inputText,
     done: false
   };
-  fetchTodos(URL, 'POST', payload)
-    .then(res => {
-      if (res.status === 200 || res.status === 201) {
-        console.log('등록 성공!');
-      } else {
-        console.log('등록 실패!');
-      }
-    });
+  insertTodo(payload);
+ 
 };
 
 // step2. 할 일 등록 기능 
@@ -107,6 +106,7 @@ $textInput.addEventListener('keydown',e=>{
 
     $addBtn.click();
   }
+  
 });
 
 //★form의 submit이벤트를 중단시켜야함.
@@ -117,6 +117,12 @@ document.querySelector('.todo-insert').addEventListener('submit',e=>{
 
 
 // step3. 할 일 삭제 기능
+const removeTodo=async (id)=>{
+    // 서버에 삭제 요청하기
+    const res= await fetchTodos(`${URL}/${id}`, 'DELETE');
+   
+  V
+}
 const deleteTodoHandler = e => {
   e.preventDefault();
   if (!e.target.matches('.remove span')) return;
@@ -136,6 +142,7 @@ const deleteTodoHandler = e => {
         console.log('삭제 실패!');
       }
     });
+    removeTodo(id);
 };
 
 $todoList.addEventListener('click', deleteTodoHandler);
@@ -151,9 +158,15 @@ const checkTodoHandler = e => {
   console.log(e.target.checked); // 현재상태지 이전상태가 아니다
 
   const id = e.target.closest('.todo-list-item').dataset.id;
-  fetchTodos(`${URL}/${id}`, 'PATCH', {
-    done: e.target.checked
-  });
+  
+  //async ->무조건 promise로 리턴
+  (async()=>{
+    const res=await fetchTodos(`${URL}/${id}`, 'PATCH', {
+      done: e.target.checked
+    });
+
+  })();
+  
 
   // .app-title
 };
