@@ -19,8 +19,26 @@ const fetchTodos = (url, method='GET', payload=null) => {
   return fetch(url, requestInit);
 };
 
+const renderRestTodo=todoList=>{
+  //총할일 개수 세기
+  const totalTodos=todoList.length;
+  //완료된 할일의 개수
+  const restTodos=todoList.filter(todo=>todo.done).length;
+
+  //랜더링 처리
+  const $rest=document.querySelector('.rest-todo');
+  if(totalTodos>0){
+    $rest.textContent=`(${restTodos} / ${totalTodos})`
+  }
+}
+
 // 화면에 todos를 렌더링하는 함수
 const renderTodos = (todoList) => {
+  //할일개수 렌더링
+  renderRestTodo(todoList);
+
+
+
   // li태그의 템플릿을 가져옴
   const $liTemplate = document.getElementById('single-todo');
 
@@ -43,6 +61,7 @@ const renderTodos = (todoList) => {
 
 // ========= 이벤트 관련 함수 ========= //
 const addTodoHandler = e => {
+  e.preventDefault();
   
   // 1. 클릭이벤트가 잘 일어나나?
   // console.log('클릭!');
@@ -52,6 +71,13 @@ const addTodoHandler = e => {
   const $textInput = document.getElementById('todo-text');
   // 2-2. 인풋 안에 텍스트를 꺼내자
   const inputText = $textInput.value;
+
+  //입력검증
+  if(inputText.trim()===''){
+    $textInput.style.background='orangered';
+    $textInput.setAttribute('placeholder','공백은 허용되지 않습니다.');
+    return;
+  }
 
   // 3. 그럼 서버에 이 데이터를 보내서 저장해야 하는데?
   // -> fetch가 필요하겠다. 저장이니까 POST해야겠다.
@@ -73,10 +99,26 @@ const addTodoHandler = e => {
 // step2. 할 일 등록 기능 
 const $addBtn = document.getElementById('add');
 $addBtn.addEventListener('click', addTodoHandler);
-$addBtn.addEventListener('keydown', addTodoHandler);
+
+//엔터이벤트
+const $textInput=document.getElementById('todo-text');
+$textInput.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
+
+    $addBtn.click();
+  }
+});
+
+//★form의 submit이벤트를 중단시켜야함.
+document.querySelector('.todo-insert').addEventListener('submit',e=>{
+  e.preventDefault();
+});
+
+
 
 // step3. 할 일 삭제 기능
 const deleteTodoHandler = e => {
+  e.preventDefault();
   if (!e.target.matches('.remove span')) return;
 
   if (!confirm('진짜로 삭제합니까??')) return;
